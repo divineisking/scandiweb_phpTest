@@ -1,28 +1,24 @@
 <?php
 
-    header('Access-Control-Allow-Origin: *',
-    "Access-Control-Allow-Credentials : true "
-);
-
     $result;
 
     //return json_encode($viewProduct->showAllProducts());
 
+    include '../classes/http.class.php';
     include '../classes/dbh.class.php';
-    include '../classes/productClass.class.php';
-    include '../classes/addctrl.class.php';
+    include '../classes/module.class.php';
+    include '../classes/ctrl.class.php';
 
+    $httpConn = new HttpConnect;
+    $httpConn->httpConn();
     $viewProduct = new ViewProducts;
+    
 
 
     //$viewProduct->showAllProducts();
     $result = json_encode($viewProduct->showAllProducts());
 
     echo $result;
- 
-
-   
-     //$viewProduct->showAllProducts();
 
   
 

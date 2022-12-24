@@ -1,5 +1,6 @@
 <?php
 
+//add product ctrl class
 class AddProductCtrl extends AddProduct{
     //product features
     protected $product_name;
@@ -16,27 +17,30 @@ class AddProductCtrl extends AddProduct{
     }
 
     public function addProduct(){
-        if ($this->invalidsku() == false)
+        if ($this->invalidSku() == false)
         {
             //error "invalid sku"
-            header("location: ../addProduct.php?error=invalidsku");
+            header("location: ../index.html?error=invalidsku");
             exit();
         };
         if ($this->skuTakenCheck() == false)
         {
             //error "Sku already exists"
-            header("location: ../addProduct.php?error=skuAlreadyExists");
+    
+            echo 'sku already exists';
+            http_response_code(204);
             exit();
         };
 
         
-            $this->setProducts($this->product_name, $this->product_sku, $this->product_price, $this->product_attributes);
+        $this->setProducts($this->product_name, $this->product_sku, $this->product_price, $this->product_attributes);
 
        
        
         
     }
 
+    //check if sku is alphanumeric
     private function invalidSku() 
     {
         $result;
@@ -52,6 +56,7 @@ class AddProductCtrl extends AddProduct{
         return $result;
     }
 
+    //check if sku already exist
     private function skuTakenCheck() {
         $result;
 
@@ -64,5 +69,31 @@ class AddProductCtrl extends AddProduct{
             $result = true
         );
         return $result;
+    }
+};
+
+//view product ctrl class
+class ViewProducts extends GetProducts {
+
+    //run get products function
+    public function showAllProducts() {
+        $products = $this->getProducts();
+        return $products;
+    }
+};
+
+//delete product ctrl class
+class DeleteProdCtrl extends DeleteProducts {
+    //product id
+    protected $product_id;
+
+    //get product id 
+    public function __construct($product_id) {
+        $this->product_id = $product_id;
+    }
+
+    //run setDelete function
+    public function deleteProduct() {
+        $this->setDelete($this->product_id);
     }
 }
