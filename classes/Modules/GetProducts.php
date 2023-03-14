@@ -1,14 +1,12 @@
 <?php
 
 namespace Modules;
-//include 'classes/Connections/DbCon.php';
 
 //get products module class
 abstract class GetProducts extends \Connections\DbCon
 {
     //retriveing products and products features
     //method to retrive product features
-
     public function getProducts()
     {
         $sql = "SELECT * FROM products";

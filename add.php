@@ -1,13 +1,10 @@
 <?php
-//instantiate httpconnect class
-//require 'includes/autoloader.inc.php';
 
 require 'includes/autoloader.inc.php';
 
+//instantiate httpconnect class
 $httpConn = new Connections\HttpConnect;
 $httpConn->httpConn();
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //get data from frontend
@@ -25,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //send data to db
     //instantiate AddProductctrl class
-
     $addProduct = new Ctrl\AddProductCtrl($product_name, $product_sku, $product_price, $product_attributes);
     $addProduct->addProduct();
 }

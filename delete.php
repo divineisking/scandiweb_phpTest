@@ -1,7 +1,8 @@
 <?php
-//instantiate httpconnect class
+
 require 'includes/autoloader.inc.php';
 
+//instantiate httpconnect class
 $httpConn = new Connections\HttpConnect;
 $httpConn->httpConn();
 
@@ -12,14 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //decode json data
     $data = json_decode($json);
     $product_id = $data->iD;
-
-    //instantiate AddProductctrl class
     $productid = $product_id;
     $i = 0;
 
     while ($i < count($productid)) {
         $product_id = $productid[$i];
 
+        //instantiate AddProductctrl class
         $deleteProduct = new Ctrl\DeleteProdCtrl($product_id);
         $deleteProduct->deleteProduct();
 
