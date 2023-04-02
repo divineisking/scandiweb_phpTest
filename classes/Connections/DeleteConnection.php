@@ -2,11 +2,11 @@
 
 namespace Connections;
 
-class DeleteConnection
+class DeleteConnection extends \Product\Product
 {
     public function delete()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') :
             //get data from frontend
             $json = file_get_contents('php://input');
 
@@ -16,15 +16,15 @@ class DeleteConnection
            $productid = $product_id;
            $i = 0;
 
-           while ($i < count($productid)) {
+           while ($i < count($productid)) :
                $product_id = $productid[$i];
 
                //instantiate DeleteProdCtrl class
-               $deleteProduct = new \Ctrl\DeleteProdCtrl($product_id);
-               $deleteProduct->deleteProduct();
+               //$this->constructId($product_id);
+               $this->deleteProduct($product_id);
 
                $i++;
-           };
-       }
+           endwhile;
+        endif;
     }
 }
