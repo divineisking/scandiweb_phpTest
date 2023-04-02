@@ -5,5 +5,5 @@
     $httpConn = new Connections\HttpConnect;
     $httpConn->httpConn();
 
-    $view = new Connections\ViewConnection;
+    $view = new Connections\Connection;
     $view->view();

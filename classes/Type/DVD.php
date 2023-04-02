@@ -12,6 +12,7 @@ class DVD extends \Product\Product
 
     public function addDVD($product_name, $product_sku, $product_price, $product_attributes)
     {
+        //product features
         $this->product_name = $product_name;
         $this->product_sku = $product_sku;
         $this->product_price = $product_price;

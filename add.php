@@ -6,5 +6,5 @@ require 'includes/autoloader.inc.php';
 $httpConn = new Connections\HttpConnect;
 $httpConn->httpConn();
 
-$add = new Connections\AddConnection;
+$add = new Connections\Connection;
 $add->add();

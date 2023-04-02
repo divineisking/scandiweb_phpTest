@@ -6,5 +6,5 @@ require 'includes/autoloader.inc.php';
 $httpConn = new Connections\HttpConnect;
 $httpConn->httpConn();
 
-$delete = new Connections\DeleteConnection;
+$delete = new Connections\Connection;
 $delete->delete();
